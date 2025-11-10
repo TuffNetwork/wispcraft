@@ -546,7 +546,9 @@ export function encryptRSA(data: Uint8Array, n: bigint, e: bigint): Uint8Array {
 }
 
 export async function mchash(input: Uint8Array) {
-	let buf = new Uint8Array(await crypto.subtle.digest("sha-1", input));
+	let buf = new Uint8Array(
+		await crypto.subtle.digest("sha-1", input as BufferSource)
+	);
 	let out = "";
 
 	if ((buf[0] & 0x80) == 128) {
