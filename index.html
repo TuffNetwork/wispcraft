@@ -189,23 +189,21 @@
 					const htmlFile = fileElem.files[0];
 					const reader = new FileReader();
 					reader.onload = function (e) {
-						let content = e.target.result;
-						let index = content.toLowerCase().indexOf("<head>");
-						if (index == -1) {
+						const content = e.target.result;
+						const parser = new DOMParser();
+						const doc = parser.parseFromString(content, "text/html");
+						if (!doc.head) {
 							alert("Invalid client file!");
 							fileElem.value = "";
 							fileElem.removeAttribute("disabled");
 							return;
 						}
-						index += 6;
-
-						let inject = `
-							<script type="text/javascript">
-								${atob(getWispcraftBundle())}
-							<${"/"}script>
-						`;
-						content = content.slice(0, index) + inject + content.slice(index);
-						const blob = new Blob([content], {
+						const script = doc.createElement("script");
+						script.type = "text/javascript";
+						script.textContent = atob(getWispcraftBundle());
+						doc.head.prepend(script);
+						const finalContent = doc.documentElement.outerHTML;
+						const blob = new Blob([finalContent], {
 							type: "text/html; charset=utf-8",
 						});
 						downloadLink.download = "wispcraft-" + htmlFile.name;

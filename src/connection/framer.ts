@@ -21,7 +21,7 @@ async function compress(buf: Buffer): Promise<Buffer> {
 	const compressor = new CompressionStream("deflate");
 
 	const writer = compressor.writable.getWriter();
-	writer.write(buf.inner);
+	writer.write(buf.inner as BufferSource);
 	writer.close();
 
 	const data = Buffer.new();
@@ -41,7 +41,7 @@ async function decompress(buf: Buffer): Promise<Buffer> {
 	const compressor = new DecompressionStream("deflate");
 
 	let writer = compressor.writable.getWriter();
-	writer.write(buf.inner);
+	writer.write(buf.inner as BufferSource);
 	writer.close();
 
 	const data = Buffer.new();

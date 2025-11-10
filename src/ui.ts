@@ -1,7 +1,7 @@
 import { deviceCodeAuth, getProfile, minecraftAuth } from "./auth";
 import { reconnect, set_wisp_server } from "./connection/epoxy";
 import { authstore, TokenStore } from ".";
-import encodeQR from "@paulmillr/qr";
+import encodeQR from "qr";
 
 let keydownListeners: Array<EventListenerOrEventListenerObject> = [];
 const nativeAddEventListener = window.addEventListener;
@@ -392,7 +392,7 @@ export function createUI() {
 		accountSelect.value = localStorage["wispcraft_last_used_account"];
 	}
 
-	let saveTi: number = -1;
+	let saveTi: any = -1;
 
 	wispInput.onchange = async () => {
 		if (saveTi != -1) {

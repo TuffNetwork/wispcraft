@@ -267,7 +267,7 @@ class AutoWS extends EventTarget {
 			}
 			el(event);
 		};
-		let ti: number = -1;
+		let ti: any = -1;
 		let called = false;
 		const el2 = () => {
 			if (called) {
