@@ -41,7 +41,7 @@ wispUrl =
 	((window as any).anura && (window as any).anura.wsproxyURL) ||
 	new URL(window.location.href).searchParams.get("wisp") ||
 	localStorage["wispcraft_wispurl"] ||
-	"wss://wisp.run/";
+	"wss://anura.pro/";
 
 try {
 	setWispUrl(wispUrl);
