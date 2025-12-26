@@ -205,6 +205,9 @@ export function createUI() {
             svg {
           	  max-width: 10%
             }
+            .exit {
+            	max-width: 100%
+            }
         </style>
 
         <div class="backdrop-blur hidden" id="backdrop_blur"></div>
@@ -216,7 +219,7 @@ export function createUI() {
                     <h1>Wispcraft Configuration</h1>
                 </div>
                 <div class="side" style="padding-right:1rem;color:#94A3B8;">
-                    <svg id="close" onclick="document.querySelector('.settings-ui').classList.add('hidden');document.querySelector('.backdrop-blur').classList.add('hidden');" xmlns="http://www.w3.org/2000/svg" width="24" height="24" stroke="currentColor" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    <svg id="close" class="exit" onclick="document.querySelector('.settings-ui').classList.add('hidden');document.querySelector('.backdrop-blur').classList.add('hidden');" xmlns="http://www.w3.org/2000/svg" width="24" height="24" stroke="currentColor" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                 </div>
             </div>
 
